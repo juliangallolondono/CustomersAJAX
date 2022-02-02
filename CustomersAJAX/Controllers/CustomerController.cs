@@ -26,18 +26,15 @@ namespace CustomersAJAX.Controllers
         {
             Tuple<List<Customer>, Customer> tuple;
             tuple = new Tuple<List<Customer>, Customer>(customers, customers[0]);
-
-
             return View("Customer", tuple);
         }
 
+        [HttpPost] 
         public ActionResult OnSelectCustomer(string CustomerNumber)
         {
             Tuple<List<Customer>, Customer> tuple;
             tuple = new Tuple<List<Customer>, Customer>(customers, customers[Convert.ToInt32(CustomerNumber)]);
-
-
-            return View("Customer", tuple);
+            return PartialView("_CustomerDetails", customers[Convert.ToInt32(CustomerNumber)]);
         }
 
     }
